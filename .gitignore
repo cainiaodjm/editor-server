@@ -24,4 +24,4 @@ package-lock.json
 yarn.lock
 dist.zip
 .DS_Store
-
+logs/
