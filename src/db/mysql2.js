@@ -1,10 +1,10 @@
 // mysql2连接测试
 const mysql = require('mysql2/promise')
-const mysqlConfig = require('../config/index')
-
+const {devConfig} = require('../config/index')
+const {isProd,isTest} = require("../utils/env")
 async function testMysqlConn(){
     try {
-        const connection = await mysql.createConnection(mysqlConfig)
+        const connection = await mysql.createConnection(devConfig)
         const [rows]= await connection.execute('select now();')
         return rows
     } catch (error) {

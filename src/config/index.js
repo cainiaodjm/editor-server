@@ -1,2 +1,4 @@
 const  dev = require('./envs/dev')
-module.exports =dev.mysqlConfig
+module.exports ={
+   devConfig: dev.mysqlConfig
+}
