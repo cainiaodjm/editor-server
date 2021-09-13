@@ -1,5 +1,5 @@
 const ENV = process.env.NODE_ENV || ''
-
+console.log(ENV)
 module.exports = {
     ENV,
     isProd:ENV === 'production',
