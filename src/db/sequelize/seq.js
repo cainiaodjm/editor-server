@@ -5,10 +5,7 @@ const { isTest, isProd } = require('../../utils/env');
 
 const {database,user,password,host,port} = devConfig
 
-// const sequelize = new Sequelize(devConfig.database,devConfig.user,devConfig.password,{
-//     host:devConfig.host,
-//     dialect:'mysql'
-// })
+
 const conf = {
     host,
     port,
