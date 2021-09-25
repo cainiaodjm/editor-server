@@ -8,7 +8,7 @@ module.exports  = {
     },
     mongodbConf:{
         host:"127.0.0.1",
-        port:21017,
+        port:27017,
         dbName:'editor_server'
     }
 }
