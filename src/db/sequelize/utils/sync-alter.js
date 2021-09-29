@@ -36,7 +36,7 @@ async function syncDb(){
         const fileChanged = modified.concat(notAdded).concat(created).concat(deleted).concat(renamed)
         //
        
-        if(fileChanged.length){
+        if(fileChanged.length>0){
             //说明 git status 有改动
             //是否改动了 db 相关的文件
             const changedDbFiles = fileChanged.some(f=>{
