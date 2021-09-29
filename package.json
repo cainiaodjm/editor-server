@@ -12,22 +12,27 @@
     "debug": "^4.1.1",
     "dotenv": "^10.0.0",
     "ejs": "~2.3.3",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-convert": "^1.2.0",
     "koa-json": "^2.0.2",
+    "koa-jwt": "^4.0.3",
     "koa-logger": "^3.2.0",
     "koa-onerror": "^4.1.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.0",
+    "mongoose": "^6.0.7",
     "mysql2": "^2.3.0",
+    "redis": "^3.1.2",
     "require-all": "^3.0.0",
     "sequelize": "^6.6.5",
     "simple-git": "^2.45.1"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "jest": "^27.2.3",
     "nodemon": "^1.19.1"
   }
 }

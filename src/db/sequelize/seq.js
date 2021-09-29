@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
-const {devConfig} = require('../../config');
+const {mysqlConfig} = require('../../config');
 const { isTest, isProd } = require('../../utils/env');
 
 
-const {database,user,password,host,port} = devConfig
+const {database,user,password,host,port} = mysqlConfig
 
 
 const conf = {

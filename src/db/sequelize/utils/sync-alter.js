@@ -52,7 +52,7 @@ async function syncDb(){
         }
         //如果git status 没有改动 则照常同步数据库
     }
-   
+  
     if(needToSyncDb){
         await sequelize.sync({alter:true})
     }
