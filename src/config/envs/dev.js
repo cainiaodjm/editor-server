@@ -1,18 +1,32 @@
+
+const dotenv = require('dotenv')
+const path = require('path')
+const envName = process.env.NODE_ENV || 'dev'
+const envPath = path.resolve(__dirname,`../../../.env.${envName}`)
+const result = dotenv.config({path:envPath})
+let config =null
+if(result.error){
+    config = {}
+}else{
+    config=result.parsed
+}
+
 module.exports  = {
     mysqlConfig : {
-        host:'127.0.0.1',
-        user:'root',
-        password:"123456",
-        port:3306,
-        database:'ediotr_server'
+        host:config.MYSQL_HOST,
+        user:config.MYSQL_PORT,
+        password:config.MYSQL_PASSWORD,
+        port:config.MYSQL_PORT,
+        database:config.MYSQL_DATABASE
     },
     mongodbConf:{
-        host:"127.0.0.1",
-        port:27017,
-        dbName:'editor_server'
+        host:config.MONGODB_HOST,
+        port:config.MONGODB_PORT,
+        dbName:config.MONGODB_DATABASE
     },
     redisConfig:{
-        port:6379,
-        host:"127.0.0.1",
+       
+        port:config.REDIS_PORT,
+        host:config.REDIS_HOST,
     }
 }

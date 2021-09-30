@@ -6,6 +6,7 @@ const {host,port,dbName,user,password} = mongodbConf
 //拼接连接字符串
 let url = `mongodb://${host}:${port}` //dev环境
 const options  ={
+    dbName:dbName,
     autoIndex: false, // Don't build indexes
     serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
     socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
