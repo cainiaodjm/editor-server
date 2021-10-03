@@ -25,7 +25,6 @@ module.exports  = {
         dbName:config.MONGODB_DATABASE
     },
     redisConfig:{
-       
         port:config.REDIS_PORT,
         host:config.REDIS_HOST,
     }
