@@ -14,7 +14,7 @@ if(result.error){
 module.exports  = {
     mysqlConfig : {
         host:config.MYSQL_HOST,
-        user:config.MYSQL_PORT,
+        user:config.MYSQL_USER,
         password:config.MYSQL_PASSWORD,
         port:config.MYSQL_PORT,
         database:config.MYSQL_DATABASE
@@ -27,5 +27,6 @@ module.exports  = {
     redisConfig:{
         port:config.REDIS_PORT,
         host:config.REDIS_HOST,
-    }
+    },
+
 }
