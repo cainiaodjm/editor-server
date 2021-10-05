@@ -3,8 +3,8 @@ const cpuCoreLength = os.cpus().length
 module.exports = {
   apps : [{
     name   : "biz-editor-server",
-    script : "bin/www",
-    instances:cpuCoreLength,
+    script : "./bin/www.js",
+    instances:1,
     ignore_watch:['node_modules','__test__','logs'],
     error_file:'./logs/err.log',
     out_file:'./logs/out.log',
