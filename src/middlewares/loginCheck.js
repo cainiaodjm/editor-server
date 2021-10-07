@@ -1,5 +1,1 @@
-
-
-module.exports = async function loginCheck(ctx,next){
-    
-}
+module.exports = async function loginCheck(ctx, next) {};
