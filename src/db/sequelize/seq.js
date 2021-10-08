@@ -1,29 +1,27 @@
-const Sequelize = require('sequelize');
-const {mysqlConfig} = require('../../config');
-const { isTest, isProd } = require('../../utils/env');
+const Sequelize = require("sequelize");
+const { mysqlConfig } = require("../../config");
+const { isTest, isProd } = require("../../utils/env");
 
-
-const {database,user,password,host,port} = mysqlConfig
-
+const { database, user, password, host, port } = mysqlConfig;
 
 const conf = {
-    host,
-    port,
-    dialect:'mysql'
-}
-//测试环境不打印日志
-if(isTest){
-    conf.logging = ()=>{}
+  host,
+  port,
+  dialect: "mysql",
+};
+// 测试环境不打印日志
+if (isTest) {
+  conf.logging = () => {};
 }
 
-if(isProd){
-    conf.pool = {
-        max:5,
-        min:0,
-        idle:1000,//如果一个线程10秒钟内没有被使用过的话,那么就释放线程
-    }
+if (isProd) {
+  conf.pool = {
+    max: 5,
+    min: 0,
+    idle: 1000, // 如果一个线程10秒钟内没有被使用过的话,那么就释放线程
+  };
 }
-console.log(database,user,password,conf,"==========")
-//创建连接
-const sequelize = new Sequelize(database,user,password,conf)
-module.exports = sequelize 
+console.log(database, user, password, conf, "==========");
+// 创建连接
+const sequelize = new Sequelize(database, user, password, conf);
+module.exports = sequelize;

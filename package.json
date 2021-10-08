@@ -9,7 +9,8 @@
     "prd-dev": "cross-env NODE_ENV=prd-dev pm2 start bin/pm2-pre-dev.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:local": "cross-env NODE_ENV=test-local jest --runInBand --passWithNoTests --colors --forceExit",
-    "test:remote": "cross-env NODE_ENV=test-remote jest --runInBand --passWithNoTests --colors --forceExit"
+    "test:remote": "cross-env NODE_ENV=test-remote jest --runInBand --passWithNoTests --colors --forceExit",
+    "lint":"eslint \"src/**/*.{js,ts}\""
   },
   "dependencies": {
     "axios": "^0.21.4",

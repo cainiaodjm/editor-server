@@ -16,5 +16,6 @@ module.exports = {
     "no-console": 0,
     "max-classes-pre-file": 0,
     "no-empty-function": 0,
+    "func-names": 0,
   },
 };
