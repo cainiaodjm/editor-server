@@ -19,6 +19,6 @@ jobs:
             node-version: 14
             cache: 'npm'
         - name: lint and test
-          run: npm i
-          run: npm run lint
-          run: npm run test:remote
+        - run: npm i
+        - run: npm run lint
+        - run: npm run test:remote
