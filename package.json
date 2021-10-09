@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:local": "cross-env NODE_ENV=test-local jest --runInBand --passWithNoTests --colors --forceExit",
     "test:remote": "cross-env NODE_ENV=test-remote jest --runInBand --passWithNoTests --colors --forceExit",
-    "lint":"eslint \"src/**/*.{js,ts}\""
+    "lint": "eslint \"src/**/*.{js,ts}\""
   },
   "dependencies": {
     "axios": "^0.21.4",
@@ -45,6 +45,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.2.3",
     "nodemon": "^1.19.1",
+    "pm2": "^5.1.2",
     "prettier": "2.4.1"
   }
 }
