@@ -1,3 +1,5 @@
+
+# syntax=docker/dockerfile:1
 FROM node:14
 #自定义的工作目录 在容器中 
 WORKDIR /app
@@ -18,5 +20,8 @@ RUN npm install
 
 #启动容器时 只能有一个CMD 需要一个阻塞控制台的命令 
 CMD npm run prd-dev && npx pm2 log
-
+# CMD npm run dev && npx pm2 log
 #环境变量
+
+ENV SERVER_NAME="editor-server"
+ENV AUTHOR_NAME="cainiaodjm"

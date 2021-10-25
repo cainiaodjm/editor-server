@@ -1,18 +1,19 @@
-version: '3'
+version: '3.7'
 services:
-   editor-server: #service name
-      build:
-        context: . #当前目录
-        dockerfile: dockerFile #基于dockerfile创建
-      image: editor-server #依赖于dockerfile创建的镜像
-      ports:
-        - 8081:3000
-
-   editor-redis:
-      image: redis
-      container_name: editor-redis
-      ports:
-        #宿主机 可以用127.0.0.1:6378 即可连接容器中的数据库
-        - 6378:6379
-      environment:
-        - TZ=Asia/Shanghai #设置时区
+  editor-server: #service name
+    build:
+      context: . #当前目录
+      dockerfile: Dockerfile #基于dockerfile创建
+    image: editor-server #依赖于dockerfile创建的镜像
+    container_name: editor-server
+    ports:
+      - 8081:3000
+   
+  editor-redis:
+    image: redis
+    container_name: editor-redis #容器名称
+    ports:
+      #宿主机 可以用127.0.0.1:6378 即可连接容器中的数据库
+      - 6378:6379
+    environment:
+      - TZ=Asia/Shanghai #设置时区
