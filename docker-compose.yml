@@ -17,3 +17,30 @@ services:
       - 6378:6379
     environment:
       - TZ=Asia/Shanghai #设置时区
+  editor-mysql:
+    image: mysql
+    container_name: editor-mysql
+    restart: always
+    privileged: true # 高权限 执行下面的 mysql/init
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - '.docker-volumes/mysql/log:/var/log/mysql' #记录日志
+      - '.docker-volumes/mysql/data:/var/lib/mysql' #数据持久化
+      - 'mysql/init:/var/log/mysql' #记录日志
+    enviroment:
+      # - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=editor_server
+      - TZ=Asia/Shanghai
+    ports:
+      - 3305:3306
+  editor-mongo:
+    image: mongo
+    container_name: editor-mongo
+    restart: always
+    volumes:
+      - '.docker-volumes/mongo/data:/data/db' #数据持久化
+    enviroment:
+      - MONGO_INITDB_DATABASE=editor_server
+      - TZ=Asia/Shanghai
+    ports:
+      - 27016:27017
