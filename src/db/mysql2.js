@@ -3,18 +3,10 @@ const mysql = require("mysql2/promise");
 const { mysqlConfig } = require("../config/index");
 const { isProd, isTest } = require("../utils/env");
 
-console.log(process.env.NODE_ENV);
-
 // eslint-disable-next-line consistent-return
 async function testMysqlConn() {
   try {
-    const testConfig = {
-      host: "localhost",
-      user: "root",
-      password: "123456",
-      database: "editor_server",
-    };
-
+    console.log(process.env.NODE_ENV);
     console.log(mysqlConfig, "=======");
     const connection = await mysql.createConnection(mysqlConfig);
 

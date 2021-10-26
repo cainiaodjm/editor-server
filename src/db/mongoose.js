@@ -4,9 +4,8 @@ const { mongodbConf } = require("../config/index");
 const { host, port, dbName, user, password } = mongodbConf;
 
 // 拼接连接字符串
-let url = `mongodb://${host}:${port}`; // dev环境
+let url = `mongodb://${host}:${port}/${dbName}`; // dev环境
 const options = {
-  dbName,
   autoIndex: false, // Don't build indexes
   serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
   socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
@@ -14,12 +13,13 @@ const options = {
 };
 
 if (user && password) {
-  url = `mongodb://${user}:${password}@${host}:${port}`; // 生产环境
+  url = `mongodb://${user}:${password}@${host}:${port}/${dbName}`; // 生产环境
   options.authSource = "admin";
 }
 
 mongoose
-  .connect(url, options)
+  // .connect(url, options)
+  .connect(url)
   .then(() => {
     console.log(`${url} is connect for mongodb`);
   })
