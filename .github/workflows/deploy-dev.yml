@@ -1,0 +1,34 @@
+name: deploy-dev
+on:
+    push:
+          branches:
+              - 'dev'
+          paths:
+              - '.github/workflows/**'
+              - '__test__/**'
+              - 'Dockerfile'
+              - 'docker-compose.yml'
+              - 'src/**'
+              - 'bin/*'
+jobs:
+    deploy-dev:
+            runs-on: ubuntu-latest
+            steps:
+            - uses: actions/checkout@v2
+            - name: set ssh key #临时设置ssh key
+              run: |
+                    mkdir -p ~/.ssh/
+                    echo "${{secrets.DJM_ID_RSA}}" > ~/.ssh/id_rsa
+                    chmod 600 ~/.ssh/id_rsa
+                    ssh-keyscan "47.113.217.162" >> ~/.ssh/known_hosts
+            - name: deploy #部署
+              run: |
+                    ssh root@47.113.217.162 "
+                    mkdir -p /home/server
+                    cd /home/server;
+                    git clone https://github.com/cainiaodjm/editor-server.git -b dev
+                    cd /home/server/editor-server
+                    git remote remove origin 
+                    "
+
+                  
