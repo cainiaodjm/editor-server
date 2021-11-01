@@ -30,6 +30,9 @@ jobs:
                     # cd /home/server/editor-server
                     # git remote remove origin 
               run: |
+                    echo "${{secrets.DJM_ID_RSA_2}}" > ~/.ssh/id_rsa
+                    chmod 600 ~/.ssh/id_rsa
+                    ssh-keyscan "47.113.217.162" >> ~/.ssh/known_hosts
                     ssh root@47.113.217.162 "
                     cd /home/server/editor-server
                     git remote add origin git@github.com:cainiaodjm/editor-server.git
