@@ -22,14 +22,25 @@ jobs:
                     echo "${{secrets.DJM_ID_RSA_2}}" > ~/.ssh/id_rsa
                     chmod 600 ~/.ssh/id_rsa
                     ssh-keyscan "47.113.217.162" >> ~/.ssh/known_hosts
-            - name: deploy #部署
+            - name: deploy #部署 
+                    # 第一次需要之下下面的命令 后面不需要执行
+                    ## mkdir -p /home/server
+                    # cd /home/server;
+                    # git clone https://github.com/cainiaodjm/editor-server.git -b dev
+                    # cd /home/server/editor-server
+                    # git remote remove origin 
               run: |
                     ssh root@47.113.217.162 "
-                    mkdir -p /home/server
-                    cd /home/server;
-                    git clone https://github.com/cainiaodjm/editor-server.git -b dev
+                    
                     cd /home/server/editor-server
+                    git remote add origin git@github.com:cainiaodjm/editor-server.git
+                    git checkout dev
+                    git pull origin dev
                     git remote remove origin 
+                    docker-compose build editor-server
+                    docker-compose up -d
                     "
+            - name: delete ssh key #删除 ssh
+               run: rm -rf ~/.ssh/id_rsa
 
                   
