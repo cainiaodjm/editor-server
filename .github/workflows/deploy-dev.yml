@@ -31,15 +31,13 @@ jobs:
                     # git remote remove origin 
               run: |
                     ssh root@47.113.217.162 "
-                    
                     cd /home/server/editor-server
                     git remote add origin git@github.com:cainiaodjm/editor-server.git
                     git checkout dev
                     git pull origin dev
                     git remote remove origin 
                     docker-compose build editor-server
-                    docker-compose up -d
-                    "
+                    docker-compose up -d"
             - name: delete ssh key #删除 ssh
                run: rm -rf ~/.ssh/id_rsa
 
