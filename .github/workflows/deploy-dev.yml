@@ -19,7 +19,7 @@ jobs:
             - name: set ssh key #临时设置ssh key
               run: |
                     mkdir -p ~/.ssh/
-                    echo "${{secrets.DJM_ID_RSA}}" > ~/.ssh/id_rsa
+                    echo "${{secrets.DJM_ID_RSA_2}}" > ~/.ssh/id_rsa
                     chmod 600 ~/.ssh/id_rsa
                     ssh-keyscan "47.113.217.162" >> ~/.ssh/known_hosts
             - name: deploy #部署
