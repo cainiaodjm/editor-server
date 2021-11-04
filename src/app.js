@@ -7,6 +7,8 @@ const onerror = require("koa-onerror");
 const bodyparser = require("koa-bodyparser");
 const logger = require("koa-logger");
 
+const loginCheck = require("./middlewares/loginCheck");
+
 const index = require("./routes/index");
 const users = require("./routes/users");
 
@@ -35,7 +37,7 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
-
+app.use(loginCheck);
 // routes
 app.use(index.routes(), index.allowedMethods());
 app.use(users.routes(), users.allowedMethods());

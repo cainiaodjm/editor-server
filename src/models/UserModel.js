@@ -16,7 +16,7 @@ const User = sequelize.define("user", {
   phoneNumber: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: "username",
+    unique: "phoneNumber",
     comment: "用户手机号,唯一",
   },
   nickName: {
