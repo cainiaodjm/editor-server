@@ -21,7 +21,6 @@ if (isProd) {
     idle: 1000, // 如果一个线程10秒钟内没有被使用过的话,那么就释放线程
   };
 }
-console.log(database, user, password, conf, "==========");
 // 创建连接
 const sequelize = new Sequelize(database, user, password, conf);
 module.exports = sequelize;

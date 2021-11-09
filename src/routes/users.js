@@ -7,6 +7,7 @@ const {
   phoneNumberVeriCodeSchema,
 } = require("../validator/user");
 const sendVeriCode = require("../controller/users/sendVeriCode");
+const loginByPhoneNumber = require("../controller/users/loginByPhoneNumber");
 // 路由前缀
 router.prefix("/api/users");
 
@@ -16,7 +17,7 @@ router.post(
   genValidator(phoneNumberSchema),
   async (ctx, next) => {
     const { phoneNumber, isRemoteTest } = ctx.request.body;
-    console.log(phoneNumber, isRemoteTest);
+
     // 尝试发送验证码
     const res = await sendVeriCode(phoneNumber, isRemoteTest);
     ctx.body = res;
@@ -26,7 +27,11 @@ router.post(
 router.post(
   "/loginByPhoneNumber",
   genValidator(phoneNumberVeriCodeSchema),
-  async function (ctx, next) {}
+  async function (ctx, next) {
+    const { phoneNumber, veriCode } = ctx.request.body;
+    const res = await loginByPhoneNumber(phoneNumber, veriCode);
+    ctx.body = res;
+  }
 );
 // 获取用户信息
 router.post("/getUserInfo", function (ctx, next) {});
