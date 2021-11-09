@@ -2,7 +2,10 @@ const router = require("koa-router")();
 const { SuccessRes } = require("../res-model/index");
 const loginCheck = require("../middlewares/loginCheck");
 const genValidator = require("../middlewares/genValidator");
-const { phoneNumberSchema } = require("../validator/user");
+const {
+  phoneNumberSchema,
+  phoneNumberVeriCodeSchema,
+} = require("../validator/user");
 const sendVeriCode = require("../controller/users/sendVeriCode");
 // 路由前缀
 router.prefix("/api/users");
@@ -20,7 +23,11 @@ router.post(
   }
 );
 // 使用手机号登录
-router.post("/loginByPhoneNumber", function (ctx, next) {});
+router.post(
+  "/loginByPhoneNumber",
+  genValidator(phoneNumberVeriCodeSchema),
+  async function (ctx, next) {}
+);
 // 获取用户信息
 router.post("/getUserInfo", function (ctx, next) {});
 // 修改用户信息

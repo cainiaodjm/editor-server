@@ -27,7 +27,9 @@ function validate(schema, data = {}) {
 function genValidator(schema) {
   async function validator(ctx, next) {
     const data = ctx.request.body;
+    console.log(data, schema);
     const validateError = validate(schema, data);
+    console.log(validateError);
     if (validateError) {
       ctx.body = new ErrorRes({
         ...validateFailInfo, // 其中有 errno 和 message

@@ -15,6 +15,19 @@ const phoneNumberSchema = {
     },
   },
 };
+const phoneNumberVeriCodeSchema = {
+  type: "object",
+  required: ["phoneNumber", "veriCode"],
+  properties: {
+    phoneNumber: phoneNumberRule,
+    veriCode: {
+      type: "string",
+      pattern: "^\\d{4}$", // 四位数字
+    },
+  },
+};
+
 module.exports = {
   phoneNumberSchema,
+  phoneNumberVeriCodeSchema,
 };
