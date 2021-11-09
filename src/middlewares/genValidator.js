@@ -3,6 +3,7 @@
  */
 const Ajv = require("ajv");
 const { ErrorRes } = require("../res-model/index");
+const { validateFailInfo } = require("../res-model/failInfo/index");
 
 const ajv = new Ajv({
   allErrors: true,
@@ -22,3 +23,22 @@ function validate(schema, data = {}) {
 
   return undefined;
 }
+
+function genValidator(schema) {
+  async function validator(ctx, next) {
+    const data = ctx.request.body;
+    const validateError = validate(schema, data);
+    if (validateError) {
+      ctx.body = new ErrorRes({
+        ...validateFailInfo, // 其中有 errno 和 message
+        data: validateError,
+      });
+      return;
+    }
+    // 校验成功 继续
+    await next();
+  }
+  return validator;
+}
+
+module.exports = genValidator;

@@ -1,5 +1,6 @@
 const { jwtVerify } = require("../utils/jwt");
 const { ErrorRes } = require("../res-model/index");
+const { loginCheckFailInfo } = require("../res-model/index");
 
 /**
  * 登录校验
@@ -8,7 +9,7 @@ const { ErrorRes } = require("../res-model/index");
  */
 module.exports = async function loginCheck(ctx, next) {
   // 失败信息
-  const errRes = new ErrorRes();
+  const errRes = new ErrorRes(loginCheckFailInfo);
   // 获取token
   const token = ctx.header.authorization;
   if (!token) {
