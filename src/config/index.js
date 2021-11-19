@@ -8,4 +8,6 @@ module.exports = {
   msgVeriCodeTimeout: 2 * 60,
   // jwt 过期时间
   jwtExpiresIn: "1d",
+  // 语雀的token
+  YuQueToken: "1zYRQlozd1gHmPu5ByEajRhMMlSZZ0Skf4ZOvHqY",
 };

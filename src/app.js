@@ -11,6 +11,7 @@ const loginCheck = require("./middlewares/loginCheck");
 
 const index = require("./routes/index");
 const users = require("./routes/users");
+const yuque = require("./routes/yuque");
 
 // error handler
 onerror(app);
@@ -41,6 +42,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods());
 app.use(users.routes(), users.allowedMethods());
+app.use(yuque.routes(), yuque.allowedMethods());
 
 // error-handling
 app.on("error", (err, ctx) => {
