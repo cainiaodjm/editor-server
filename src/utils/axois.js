@@ -9,17 +9,13 @@ class HttpRequest {
     this.baseURL = baseURL || "";
     this.timeout = timeout || 50000;
     this.headers = headers || {};
-    this.instance = axios.create({
-      baseURL: this.baseURL,
-      timeout: this.timeout,
-      headers: this.headers,
-    });
   }
 
-  interceptors() {
+  // eslint-disable-next-line class-methods-use-this
+  interceptors(instance) {
     // 添加拦截器
     // 请求拦截器
-    this.instance.interceptors.request.use(
+    instance.interceptors.request.use(
       function (config) {
         // 在发送请求之前做些什么
         return config;
@@ -30,11 +26,11 @@ class HttpRequest {
       }
     );
     // 添加响应拦截器
-    this.instance.interceptors.response.use(
+    instance.interceptors.response.use(
       function (response) {
         // 2xx 范围内的状态码都会触发该函数。
         // 对响应数据做点什么
-        return response.data;
+        return Promise.resolve(response.data);
       },
       function (error) {
         // 超出 2xx 范围的状态码都会触发该函数。
@@ -45,8 +41,12 @@ class HttpRequest {
   }
 
   request(options) {
-    console.log(options);
-    this.interceptors();
+    this.instance = axios.create({
+      baseURL: this.baseURL,
+      timeout: this.timeout,
+      headers: this.headers,
+    });
+    this.interceptors(this.instance);
     return this.instance(options);
   }
 }
