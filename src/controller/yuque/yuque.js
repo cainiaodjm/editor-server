@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-19 12:00:04
- * @LastEditTime: 2021-11-21 18:23:47
+ * @LastEditTime: 2021-12-17 17:29:50
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /editor-server/src/controller/yuque/getToc.js
@@ -40,7 +40,20 @@ async function getDoc(namespace, slug) {
   }
 }
 
+async function getDocList(namespace) {
+  try {
+    const res = await yuQueAxios.request({
+      method: "get",
+      url: `/repos/${namespace}/docs`,
+    });
+    return new SuccessRes(res.data);
+  } catch (error) {
+    return new ErrorRes(error);
+  }
+}
+
 module.exports = {
   getToc,
   getDoc,
+  getDocList,
 };
