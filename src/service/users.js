@@ -1,10 +1,18 @@
+/*
+ * @Author: your name
+ * @Date: 2021-11-09 16:45:51
+ * @LastEditTime: 2022-02-06 22:02:45
+ * @LastEditors: your name
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /editor-server/src/service/users.js
+ */
 const _ = require("lodash");
 const UserModel = require("../models/UserModel");
 /**
  *
  * @param {Object} param0
  */
-async function findOneUserService({ username, password, phoneNumber }) {
+async function findOneUserService({ username, password, phoneNumber, openId }) {
   const whereOpt = {};
   if (username) {
     Object.assign(whereOpt, { username });
@@ -14,6 +22,9 @@ async function findOneUserService({ username, password, phoneNumber }) {
   }
   if (phoneNumber) {
     Object.assign(whereOpt, { phoneNumber });
+  }
+  if (openId) {
+    Object.assign(whereOpt, { openId });
   }
   if (_.isEmpty(whereOpt)) return null;
   // 查询

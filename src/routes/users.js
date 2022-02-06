@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-07 23:21:53
- * @LastEditTime: 2022-02-06 02:36:14
+ * @LastEditTime: 2022-02-07 04:27:58
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /editor-server/src/routes/users.js
@@ -48,9 +48,9 @@ router.post("/getUserInfo", function (ctx, next) {});
 router.post("/updateUserInfo", function (ctx, next) {});
 // 微信登录
 router.post("/loginByWx", async function (ctx, next) {
-  const { code } = ctx.request.body;
+  const { code, userProfile } = ctx.request.body;
   console.log(code);
-  const res = await loginWx(code);
+  const res = await loginWx(code, userProfile);
   ctx.body = res;
 });
 
